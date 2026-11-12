@@ -1,0 +1,22 @@
+{
+  "name": "claude-ima",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Volumetric cloud renderer foundation layer — native WebGL2 + GLSL + TypeScript + Vite (no engine).",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check:no-any && tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "tsx scripts/run-tests.ts",
+    "test:browser": "npm run build && node scripts/browser-smoke.mjs",
+    "test:all": "npm run test && npm run test:browser",
+    "check:no-any": "node scripts/check-no-any.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.17.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

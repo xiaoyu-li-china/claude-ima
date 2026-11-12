@@ -1,0 +1,179 @@
+:root {
+  color-scheme: dark;
+  --bg: #0e1116;
+  --panel: #161b22;
+  --panel-border: #2a313c;
+  --text: #d7dde5;
+  --muted: #8b97a5;
+  --accent: #5eb3ff;
+  --ok: #4ade80;
+  --bad: #f87171;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 12px;
+  padding: 12px;
+  height: 100vh;
+}
+
+#gl-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: #000;
+  /* Rendered pixels are set from JS; CSS only stretches the backing buffer
+     to the element box, so the buffer must always match cssSize * dpr * scale. */
+  object-fit: fill;
+}
+
+#hud {
+  overflow-y: auto;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+#hud h1 {
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+
+#hud h1 span {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.hud-block {
+  margin-bottom: 18px;
+}
+
+.hud-block h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 3px 6px 3px 0;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 500;
+  width: 46%;
+}
+
+button {
+  margin-top: 8px;
+  background: #1f2630;
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+button.active {
+  background: #14304a;
+  border-color: var(--accent);
+  color: #cfe8ff;
+}
+
+#tier-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#tier-buttons button {
+  margin-top: 0;
+  flex: 1;
+}
+
+.config-error {
+  color: var(--bad);
+  font-size: 12px;
+  margin: 6px 0 0;
+}
+
+#hud-selftest {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+#hud-selftest li {
+  padding: 3px 0;
+  display: flex;
+  gap: 8px;
+}
+
+#hud-selftest .mark {
+  font-weight: 700;
+}
+
+#hud-selftest .pass .mark {
+  color: var(--ok);
+}
+
+#hud-selftest .fail .mark {
+  color: var(--bad);
+}
+
+#hud-selftest .detail {
+  color: var(--muted);
+}
+
+.state-ok {
+  color: var(--ok);
+}
+
+.state-lost {
+  color: var(--bad);
+}
+
+@media (max-width: 900px) {
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(240px, 1fr) auto;
+  }
+}

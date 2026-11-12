@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Inline empty favicon: prevents an automatic /favicon.ico 404. -->
+    <link rel="icon" href="data:," />
+    <title>Volumetric Cloud Renderer — Foundation</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="gl-canvas" aria-label="WebGL2 volumetric cloud viewport"></canvas>
+
+      <section id="hud" aria-live="polite">
+        <h1>Volumetric Cloud Renderer <span>foundation layer</span></h1>
+
+        <div class="hud-block">
+          <h2>GL 上下文</h2>
+          <table>
+            <tbody>
+              <tr><th>状态</th><td id="hud-context-state">初始化中…</td></tr>
+              <tr><th>CSS 尺寸</th><td id="hud-css-size">—</td></tr>
+              <tr><th>绘图缓冲</th><td id="hud-buffer-size">—</td></tr>
+              <tr><th>devicePixelRatio</th><td id="hud-dpr">—</td></tr>
+              <tr><th>已登记 GL 资源</th><td id="hud-resource-count">0</td></tr>
+            </tbody>
+          </table>
+          <button id="btn-lose-context" type="button">模拟上下文丢失 (WEBGL_lose_context)</button>
+        </div>
+
+        <div class="hud-block">
+          <h2>画质档位（单一数据源 src/config/quality.ts）</h2>
+          <div id="tier-buttons" role="group" aria-label="画质档位"></div>
+          <table>
+            <tbody>
+              <tr><th>当前档位</th><td id="hud-tier">—</td></tr>
+              <tr><th>步进数 raymarchSteps</th><td id="hud-steps">—</td></tr>
+              <tr><th>分辨率缩放 resolutionScale</th><td id="hud-scale">—</td></tr>
+            </tbody>
+          </table>
+          <p id="hud-config-error" class="config-error" hidden></p>
+        </div>
+
+        <div class="hud-block">
+          <h2>数学库自测（src/math）</h2>
+          <ul id="hud-selftest"></ul>
+        </div>
+
+        <div class="hud-block">
+          <h2>配置合法性校验（src/config）</h2>
+          <ul id="hud-config-checks"></ul>
+        </div>
+
+        <div class="hud-block">
+          <h2>GL 工具层自测（src/gl，含错误路径与 dispose）</h2>
+          <ul id="hud-gl-checks"></ul>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
